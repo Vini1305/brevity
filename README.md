@@ -10,7 +10,7 @@ Paste a URL or some text, and it instantly gives you a **clear, concise summary*
 ✅ Summarizes long articles into a few sentences  
 ✅ Works with **URLs or plain text**  
 ✅ Clean and minimal UI  
-✅ Powered by **OpenAI GPT models**  
+✅ Powered by **Ollama**  
 ✅ Mobile-friendly  
 
 ---
@@ -26,9 +26,7 @@ Paste a URL or some text, and it instantly gives you a **clear, concise summary*
 
 - **Frontend:** Jinja2 + Bootstrap  
 - **Backend:** Flask
-- **AI:** OpenAI GPT API  
-- **Deployment:** Vercel
-- **Self-hosting:** Docker
+- **AI:** Ollama (model used for tests gemma3:1b)  
 
 ---
 
@@ -50,7 +48,7 @@ pip install -r requirements.txt
 Create a `.env` file with your API key:
 
 ```env
-OPENAI_API_KEY=your-key-here
+OLLAMA_MODEL=your-model-here(standard gemma3:1b)
 FLASK_ENV=development
 ```
 
@@ -68,7 +66,7 @@ Then open http://localhost:5000 in your browser.
 
 1. User enters a URL or text
 2. The app fetches the article content (if a URL is given)
-3. Sends the text to the **OpenAI API** with a summarization prompt
+3. Sends the text to the **Ollama local server** with a summarization prompt
 4. Displays a **concise summary**
 
 <!-- Add a small diagram or flow image here -->
@@ -77,11 +75,16 @@ Then open http://localhost:5000 in your browser.
 
 ---
 
+## 💡 Why Ollama?
+Brevity uses Ollama as its AI engine because it’s completely free, lightweight, and runs entirely on your machine. Unlike cloud-based APIs (which often require API keys and have usage costs), Ollama allows you to run powerful open-source models locally with zero cost and no data leaving your device.
+
+For this project, we use gemma3:1b, a small yet efficient model ideal for text summarization. This makes Brevity easy to run anywhere—no subscriptions, no hidden fees, just a simple local setup.
+
 ## 🔑 Environment Variables
 
 | Variable         | Description         |
 | ---------------- | ------------------- |
-| `OPENAI_API_KEY` | Your OpenAI API key |
+| `OLLAMA_MODEL`   |      Your model     |
 | `FLASK_ENV`      | Your Flask Env here |
 
 ---
