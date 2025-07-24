@@ -1,4 +1,3 @@
-````markdown
 # Brevity 📰✨
 
 Brevity is a simple **AI-powered article summarizer**.  
