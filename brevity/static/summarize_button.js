@@ -10,8 +10,8 @@ document.getElementById("summarize-btn").addEventListener("click", async () => {
         `;
 
     if (!input) {
-    resultBox.innerHTML = "⚠️ Please enter some text or a URL.";
-    return;
+        resultBox.innerHTML = "Please enter some text or a URL.";
+        return;
     }
 
     // Detect if it's a URL (basic check)
@@ -20,20 +20,20 @@ document.getElementById("summarize-btn").addEventListener("click", async () => {
     const payload = isUrl ? { url: input } : { text: input };
 
     try {
-    const response = await fetch("/summarize", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    });
+        const response = await fetch("/summarize", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (data.summary) {
-        resultBox.innerHTML = `<strong>Summary:</strong><br>${data.summary}`;
-    } else {
-        resultBox.innerHTML = `⚠️ Error: ${data.error || "Unknown error"}`;
-    }
+        if (data.summary) {
+            resultBox.innerHTML = `<strong>Summary:</strong><br>${data.summary}`;
+        } else {
+            resultBox.innerHTML = `Error: ${data.error || "Unknown error"}`;
+        }
     } catch (err) {
-    resultBox.innerHTML = `❌ Request failed: ${err}`;
+        resultBox.innerHTML = `Request failed: ${err}`;
     }
 });

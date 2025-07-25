@@ -48,3 +48,11 @@
   .btn-primary:hover {
     background: #4b4ee0;
   }
+
+  .char_counter{
+    position: absolute; 
+    bottom: 8px; 
+    right: 10px; 
+    font-size: 12px; 
+    color: #666;
+  }

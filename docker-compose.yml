@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile.ollama
+    ports:
+      - "11434:11434"
+
+  brevity:
+    build: .
+    depends_on:
+      - ollama
+    environment:
+      OLLAMA_HOST: "http://ollama:11434"
+      OLLAMA_MODEL: gemma3:1b
+    ports:
+      - "5000:5000"

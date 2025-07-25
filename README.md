@@ -71,7 +71,7 @@ Then open http://localhost:5000 in your browser.
 
 <!-- Add a small diagram or flow image here -->
 
-![How It Works](./assets/flow.png)
+![How It Works](./assets/working.png)
 
 ---
 
@@ -106,5 +106,5 @@ This project is licensed under the MIT License.
 
 **Vinícius de Paula**
 
-* [LinkedIn](www.linkedin.com/in/vinícius-de-paula-5076991b0)
+* [LinkedIn](www.linkedin.com/in/vinicius-de-paula1305)
 * [Medium](https://medium.com/@vinicius.13052002)
