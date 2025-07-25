@@ -50,6 +50,7 @@ Create a `.env` file with your API key:
 ```env
 OLLAMA_MODEL=your-model-here(standard gemma3:1b)
 FLASK_ENV=development
+OLLAMA_HOST=ollama_api(standart localhost:11434)
 ```
 
 Run the development server:
@@ -90,6 +91,61 @@ For this project, we use gemma3:1b, a small yet efficient model ideal for text s
 
 ---
 
+## 🧪 Want to test locally?
+You have two ways to run Brevity + Ollama locally:
+
+✅ Option 1: Build and run each image manually
+Build the Ollama container (with gemma3:1b preloaded):
+
+````bash
+docker build -f Dockerfile.ollama -t brevity-ollama .
+````
+Run Ollama in the background:
+
+````bash
+docker run -d --name brevity-ollama-1 \
+  -p 11434:11434 \
+  brevity-ollama
+````
+Build the Flask app container:
+
+````bash
+docker build -f Dockerfile -t brevity-brevity .
+````
+Run the Flask app, connecting it to Ollama:
+
+````bash
+docker run -d --name brevity-brevity-1 \
+  --env OLLAMA_MODEL=gemma3:1b \
+  --env OLLAMA_HOST=http://host.docker.internal:11434 \
+  -p 5000:5000 \
+  brevity-brevity
+````
+
+Visit http://localhost:5000 🎉
+
+✅ Option 2: Use Docker Compose (easier)
+If you prefer a single command:
+
+````bash
+docker compose up --build
+````
+
+After all, pull the LLM:
+````bash
+docker exec brevity-ollama-1 ollama pull gemma3:1b
+````
+
+This will:
+✅ Build the Ollama container and preload gemma3:1b
+✅ Build the Flask app container
+✅ Start both containers together
+✅ Automatically connect Flask → Ollama
+
+Then visit http://localhost:5000 🎉
+
+So you can choose either manual build or docker-compose for local testing.
+
 ## 🤝 Contributing
 
 Pull requests are welcome!
@@ -107,5 +163,5 @@ This project is licensed under the MIT License.
 
 **Vinícius de Paula**
 
-* [LinkedIn](www.linkedin.com/in/vinicius-de-paula1305)
+* [LinkedIn](https://www.linkedin.com/in/vinicius-de-paula1305)
 * [Medium](https://medium.com/@vinicius.13052002)

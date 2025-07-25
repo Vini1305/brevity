@@ -49,11 +49,11 @@ def summarize():
         client = ollama.Client(host=ollama_host)
         #the context is passed to ollama as a list of dicts (role and content)
         context.append({'role':'user', 'content':f'You have to summarize the following. Be objective and clean:\n{text}'})
-        response = ollama.chat(model=os.getenv("OLLAMA_MODEL"), messages=context, keep_alive=-1)
+        response = ollama.chat(model="gemma3:1b", messages=context, keep_alive=-1)
         summary = response['message']['content']
         logger.info("Got summary successfully")
         return jsonify({"summary": summary})
 
     except Exception as e:
         logger.exception("Error while calling Ollama")
-        return jsonify({"error": f"OpenAI API error: {e}"}), 500
+        return jsonify({"error": f"API error: {e}"}), 500

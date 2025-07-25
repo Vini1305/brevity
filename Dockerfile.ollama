@@ -11,8 +11,7 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 # Expose Ollama API port
 EXPOSE 11434
 
-# Preload gemma3:1b model so it’s ready
-RUN ollama pull gemma3:1b
+ENV OLLAMA_HOST=0.0.0.0
 
 # Start Ollama server
 CMD ["ollama", "serve"]
