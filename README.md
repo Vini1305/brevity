@@ -82,10 +82,11 @@ For this project, we use gemma3:1b, a small yet efficient model ideal for text s
 
 ## 🔑 Environment Variables
 
-| Variable         | Description         |
-| ---------------- | ------------------- |
-| `OLLAMA_MODEL`   |      Your model     |
-| `FLASK_ENV`      | Your Flask Env here |
+| Variable         | Description            |
+| ---------------- | -------------------    |
+| `OLLAMA_MODEL`   |      Your model        |
+| `FLASK_ENV`      | Your Flask Env here    |
+| `OLLAMA_HOST`    | http://localhost:11434 |
 
 ---
 

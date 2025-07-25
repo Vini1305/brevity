@@ -1,5 +1,5 @@
 # Use a small Python base image
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # Set a working directory
 WORKDIR /app
@@ -21,7 +21,7 @@ COPY . /app
 # Set environment variables for Flask
 ENV FLASK_APP=brevity
 ENV FLASK_ENV=production
-ENV OLLAMA_HOST=http://ollama:11434   # If calling Ollama inside docker-compose
+ENV OLLAMA_HOST=http://ollama:11434
 
 # Expose the Flask port
 EXPOSE 5000
